@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of a Geography student from Kazakhstan interested in GIS, travel, education, and cultural exchange.">
+  <title>Inzhu Yedige | Personal Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --paper: #ffffff;
+      --ink: #202a27;
+      --muted: #66716c;
+      --green: #315b4c;
+      --green-light: #e5eee8;
+      --orange: #d58a5b;
+      --line: #e5e6df;
+      --shadow: 0 18px 50px rgba(29, 48, 39, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(247, 246, 242, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(229,230,223,.8);
+    }
+    nav { display:flex; align-items:center; justify-content:space-between; min-height:72px; gap:24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; text-decoration:none; font-size:1.08rem; }
+    .brand span { color: var(--orange); }
+    .nav-links { display:flex; gap:24px; flex-wrap:wrap; }
+    .nav-links a { font-size:.9rem; text-decoration:none; color:var(--muted); }
+    .nav-links a:hover { color:var(--green); }
+    .hero { padding: 88px 0 76px; }
+    .hero-grid { display:grid; grid-template-columns: 1.35fr .65fr; gap:54px; align-items:center; }
+    .eyebrow { display:inline-flex; gap:9px; align-items:center; color:var(--green); font-weight:700; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
+    .eyebrow:before { content:""; width:27px; height:2px; background:var(--orange); }
+    h1 { font-size: clamp(2.7rem, 6vw, 5.4rem); line-height:1.02; letter-spacing:-.065em; margin:20px 0 22px; max-width:760px; }
+    h1 em { font-family: Georgia, serif; font-weight:500; color:var(--green); }
+    .intro { font-size:1.12rem; color:var(--muted); max-width:650px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+    .button { display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:700; font-size:.92rem; transition:transform .2s, background .2s; }
+    .button:hover { transform:translateY(-2px); }
+    .primary { background:var(--green); color:#fff; }
+    .secondary { border:1px solid #cfd5cc; color:var(--ink); }
+    .visual {
+      min-height:380px; border-radius:28px; padding:24px; position:relative; overflow:hidden;
+      background:var(--green-light); box-shadow:var(--shadow);
+      display:flex; align-items:flex-end;
+    }
+    .visual:before {
+      content:""; position:absolute; width:290px; height:290px; border-radius:50%;
+      background:#c4d6c9; top:-55px; right:-65px;
+    }
+    .visual:after {
+      content:""; position:absolute; width:210px; height:210px; border-radius:50%;
+      border:1px solid rgba(49,91,76,.28); top:20px; right:-18px;
+    }
+    .profile-photo {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 28%;
+    }
+    .profile-visual:before, .profile-visual:after { z-index:1; pointer-events:none; }
+    .profile-visual:before { background:linear-gradient(180deg, transparent 48%, rgba(28,39,34,.28)); }
+    .profile-visual:after { display:none; }
+    .map-art { position:absolute; inset:65px 28px 70px 28px; opacity:.8; }
+    .map-art svg { width:100%; height:100%; }
+    .visual-note { position:relative; z-index:1; background:rgba(255,255,255,.88); border:1px solid rgba(255,255,255,.9); padding:15px 17px; border-radius:16px; max-width:245px; }
+    .visual-note strong { display:block; font-size:.95rem; }
+    .visual-note span { color:var(--muted); font-size:.82rem; }
+    section { padding:74px 0; }
+    .section-top { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:32px; }
+    .section-label { color:var(--orange); text-transform:uppercase; letter-spacing:.13em; font-size:.76rem; font-weight:800; }
+    h2 { font-size:clamp(2rem, 4vw, 3rem); letter-spacing:-.055em; line-height:1.1; margin:8px 0 0; }
+    .section-top p { max-width:430px; color:var(--muted); margin:0; }
+    .about-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:22px; }
+    .quote-card { background:var(--green); color:white; padding:32px; border-radius:24px; min-height:280px; display:flex; flex-direction:column; justify-content:space-between; }
+    .quote-mark { font-family:Georgia,serif; font-size:4rem; line-height:.8; color:#c5d9cd; }
+    .quote-card blockquote { font-family:Georgia,serif; font-size:1.6rem; line-height:1.35; margin:18px 0; }
+    .quote-card small { color:#d9e6de; }
+    .about-copy { background:var(--paper); border:1px solid var(--line); padding:30px; border-radius:24px; }
+    .about-copy p { color:var(--muted); margin-top:0; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:9px; margin-top:20px; }
+    .tag { background:var(--green-light); color:var(--green); border-radius:999px; padding:7px 12px; font-size:.82rem; font-weight:700; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { background:var(--paper); border:1px solid var(--line); border-radius:22px; padding:25px; transition:transform .2s, box-shadow .2s; }
+    .card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+    .card-icon { width:46px; height:46px; display:grid; place-items:center; border-radius:14px; background:var(--green-light); font-size:1.35rem; margin-bottom:20px; }
+    .card h3 { margin:0 0 9px; font-size:1.13rem; letter-spacing:-.02em; }
+    .card p { color:var(--muted); margin:0; font-size:.94rem; }
+    .experience { background:#eeefe9; }
+    .timeline { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    .timeline-item { background:rgba(255,255,255,.78); padding:25px; border-radius:20px; border:1px solid #e0e2d9; }
+    .timeline-item .type { font-size:.75rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:var(--orange); }
+    .timeline-item h3 { margin:8px 0; font-size:1.15rem; }
+    .timeline-item p { color:var(--muted); margin:0; }
+    .contact-box { background:var(--green); color:#fff; border-radius:28px; padding:42px; display:flex; justify-content:space-between; align-items:center; gap:30px; }
+    .contact-box h2 { max-width:560px; }
+    .contact-box p { color:#d8e5dd; max-width:500px; }
+    .contact-box .button { background:#fff; color:var(--green); white-space:nowrap; }
+    footer { padding:28px 0; color:var(--muted); font-size:.85rem; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid { grid-template-columns:1fr; }
+      .hero { padding-top:60px; }
+      .visual { min-height:300px; }
+      .cards { grid-template-columns:1fr 1fr; }
+      .section-top { align-items:start; flex-direction:column; }
+      .contact-box { flex-direction:column; align-items:flex-start; padding:30px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width:min(100% - 28px, 1100px); }
+      nav { align-items:flex-start; padding:17px 0; flex-direction:column; gap:8px; }
+      .nav-links { gap:14px; }
+      .nav-links a { font-size:.83rem; }
+      .hero { padding:48px 0; }
+      section { padding:54px 0; }
+      .cards, .timeline { grid-template-columns:1fr; }
+      .about-copy, .quote-card { padding:24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">INZHU YEDIGE<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#interests">Interests</a>
+        <a href="#experience">Experience</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Geography · People · Places</div>
+          <h1>Hi, I’m Inzhu. <em>Curious about the world.</em></h1>
+          <p class="intro">
+            I’m Inzhu Yedige, a Geography student from Kazakhstan with a passion for understanding
+            how places, people, and the environment shape one another. I’m interested in
+            discovering new cultures, building useful skills, and turning what I learn into
+            real-world experience.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#about">Get to know me</a>
+            <a class="button secondary" href="#interests">Explore my interests</a>
+          </div>
+        </div>
+        <div class="visual profile-visual" aria-label="Portrait of Inzhu Yedige">
+          <img class="profile-photo" src="inzhu-portrait.jpeg" alt="Portrait of Inzhu Yedige">
+          <div class="map-art" style="display:none;">
+            <svg viewBox="0 0 360 300" role="img" aria-label="Decorative map lines and location markers">
+              <g fill="none" stroke="#6f9480" stroke-width="1.5" opacity=".8">
+                <path d="M15 58 C65 10 105 88 150 50 S245 15 330 65"/>
+                <path d="M5 95 C70 50 105 125 165 88 S260 55 350 100"/>
+                <path d="M-5 140 C55 100 115 165 180 128 S270 100 365 145"/>
+                <path d="M0 185 C65 145 125 210 190 172 S280 150 360 190"/>
+                <path d="M15 230 C85 190 120 255 205 215 S285 205 350 235"/>
+                <path d="M70 5 C40 70 105 100 72 160 S70 245 100 295"/>
+                <path d="M145 0 C115 60 180 110 145 165 S155 245 175 300"/>
+                <path d="M225 0 C190 65 260 105 225 170 S230 240 250 300"/>
+                <path d="M300 5 C270 65 330 105 300 170 S300 245 320 290"/>
+              </g>
+              <g fill="#d58a5b" stroke="#fff" stroke-width="3">
+                <circle cx="155" cy="102" r="8"/><circle cx="235" cy="177" r="7"/><circle cx="91" cy="213" r="6"/>
+              </g>
+              <path d="M155 102 Q210 100 235 177 T91 213" fill="none" stroke="#315b4c" stroke-width="2.5" stroke-dasharray="5 6"/>
+            </svg>
+          </div>
+          <div class="visual-note">
+            <strong>Inzhu Yedige</strong>
+            <span>Geography student · Kazakhstan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-top">
+          <div><div class="section-label">A little about me</div><h2>Learning how the world connects.</h2></div>
+          <p>Geography is more than maps — it’s a way to understand people, places, and the relationships between them.</p>
+        </div>
+        <div class="about-grid">
+          <div class="quote-card">
+            <div class="quote-mark">“</div>
+            <blockquote>Everything is connected with geography.</blockquote>
+            <small>A thought that inspires my studies and curiosity.</small>
+          </div>
+          <div class="about-copy">
+            <p>
+              I study Geography at L. N. Gumilyov Eurasian National University in Kazakhstan.
+              Through my studies, I explore physical landscapes, environmental issues, and
+              the ways people interact with their surroundings. I’m also developing my skills
+              in GIS and digital mapping, including work with ArcGIS.
+            </p>
+            <p>
+              International exchange and travel have helped me appreciate different perspectives.
+              I value new experiences, communication, and opportunities to keep growing — both
+              academically and personally.
+            </p>
+            <div class="tag-list">
+              <span class="tag">GPA: 3.66</span><span class="tag">Geography</span><span class="tag">GIS & Mapping</span>
+              <span class="tag">Cultural Exchange</span><span class="tag">English Learning</span>
+              <span class="tag">Environmental Awareness</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <div class="wrap">
+        <div class="section-top">
+          <div><div class="section-label">What I’m interested in</div><h2>Curiosity in action.</h2></div>
+          <p>Areas that motivate me to learn, ask questions, and explore opportunities beyond the classroom.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🌍</div>
+            <h3>Geography & Our Planet</h3>
+            <p>Exploring landscapes, climate, water resources, and the relationship between human activity and the environment.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🗺️</div>
+            <h3>GIS & Digital Mapping</h3>
+            <p>Working with spatial data and maps to understand patterns, compare places, and communicate geographic information.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">✈️</div>
+            <h3>Travel & Cultural Exchange</h3>
+            <p>Learning from international experiences, meeting people with different backgrounds, and discovering new ways of life.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💬</div>
+            <h3>Languages & Communication</h3>
+            <p>Improving my English and communication skills to connect with people and feel more confident in international settings.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🌱</div>
+            <h3>Ecotourism & Sustainability</h3>
+            <p>Interested in responsible travel, Kazakhstan’s natural destinations, and ways to protect the places we enjoy.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎓</div>
+            <h3>Learning & Teaching</h3>
+            <p>Building my knowledge and exploring how education can help people grow, share ideas, and open new doors.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="wrap">
+        <div class="section-top">
+          <div><div class="section-label">My journey</div><h2>Experiences that shape me.</h2></div>
+          <p>Each new environment gives me a chance to learn, adapt, and see the world from a different perspective.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="type">Education</div>
+            <h3>Geography student in Kazakhstan</h3>
+            <p>Studying at L. N. Gumilyov Eurasian National University and developing a foundation in geography, environmental topics, and spatial analysis.</p>
+          </article>
+          <article class="timeline-item">
+            <div class="type">International exchange</div>
+            <h3>Academic experience in Poland</h3>
+            <p>An exchange experience in Poznań broadened my perspective and gave me the opportunity to experience a new culture and educational environment.</p>
+          </article>
+          <article class="timeline-item">
+            <div class="type">Work & travel</div>
+            <h3>Learning through international work</h3>
+            <p>Work & Travel experiences in the United States helped me develop independence, adaptability, teamwork, and cross-cultural communication.</p>
+          </article>
+          <article class="timeline-item">
+            <div class="type">Looking ahead</div>
+            <h3>Growing through new opportunities</h3>
+            <p>I want to keep learning, strengthen my English, expand my professional skills, and explore opportunities in education and geography.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="cv">
+      <div class="wrap">
+        <div class="section-top">
+          <div><div class="section-label">Curriculum vitae</div><h2>My background at a glance.</h2></div>
+          <p>A concise overview of my education, international experience, and skills. I’m always learning and open to new opportunities.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <div class="section-label">Education</div>
+            <h3 style="margin:8px 0 4px;">L. N. Gumilyov Eurasian National University</h3>
+            <p style="margin-bottom:8px;">Geography student · Kazakhstan</p>
+            <p style="margin-bottom:22px;"><strong>GPA: 3.66</strong></p>
+
+            <div class="section-label">International experience</div>
+            <h3 style="margin:8px 0 4px;">Academic exchange in Poland</h3>
+            <p style="margin-bottom:22px;">Experience studying in Poznań and adapting to a new cultural and educational environment.</p>
+
+            <div class="section-label">Work experience</div>
+            <h3 style="margin:8px 0 4px;">Work & Travel — United States</h3>
+            <p>International work experience focused on customer service, teamwork, adaptability, and communication across cultures.</p>
+          </div>
+          <div class="about-copy">
+            <div class="section-label">Skills & interests</div>
+            <div class="tag-list" style="margin-top:14px;">
+              <span class="tag">Geographic Research</span>
+              <span class="tag">ArcGIS / GIS</span>
+              <span class="tag">Digital Mapping</span>
+              <span class="tag">Communication</span>
+              <span class="tag">Teamwork</span>
+              <span class="tag">Adaptability</span>
+              <span class="tag">Cross-cultural Communication</span>
+              <span class="tag">English Language Development</span>
+            </div>
+            <p style="margin-top:24px;">Interested in opportunities related to education, English teaching, geography, and international exchange.</p>
+            <p style="font-size:.85rem;">To complete this CV, add your phone number, professional email, exact study dates, language levels, and any certificates or achievements you want to share.</p>
+            <a class="button primary" href="mailto:inzhuedige2006@gmail.com?subject=CV%20Request" style="margin-top:8px;">Contact me about my CV ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <div class="section-label">Let’s connect</div>
+            <h2>Good things start with a conversation.</h2>
+            <p>I’m always happy to connect with people who enjoy geography, learning, travel, and sharing ideas.</p>
+          </div>
+          <!-- Replace the example email below with your own before publishing. -->
+          <a class="button" href="mailto:inzhuedige2006@gmail.com">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Inzhu Yedige</span>
+      <span>Made with curiosity in Kazakhstan 🌿</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
